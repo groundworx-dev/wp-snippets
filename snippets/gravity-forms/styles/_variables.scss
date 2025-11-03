@@ -1,0 +1,60 @@
+/**
+ * Form Styling Variables
+ * 
+ * Core configuration variables for form styling
+ * Override these variables before importing to customize
+ * 
+ * @package Groundworx\Snippets
+ * @author Johanne Courtright
+ * @link https://groundworxagency.com
+ * @version 1.0.0
+ * @license GPL-2.0-or-later
+ */
+
+// =============================================================================
+// Form Input - Core styling
+// =============================================================================
+
+$form-input-color: var(--wp--preset--color--contrast) !default;
+$form-input-border-color: color-mix(in srgb, currentColor 65%, transparent) !default;
+$form-input-border-width: 0.075em !default;
+$form-input-border-radius: 0% !default;
+$form-input-border-style: solid !default;
+$form-input-padding: 0.35em 0.5em !default;
+$form-input-line-height: 1.5em !default;
+
+// =============================================================================
+// Form Input Focus
+// =============================================================================
+
+$form-input-focus-border-color: var(--wp--preset--color--accent-1) !default;
+$form-input-focus-box-shadow: 0 0 2px 0 var(--wp--preset--color--accent-1) !default;
+
+// =============================================================================
+// Select Dropdown
+// =============================================================================
+
+$form-select-arrow-color: rgb(76, 76, 76) !default;
+
+// =============================================================================
+// Checkbox & Radio
+// =============================================================================
+
+$form-checkbox-radio-background: var(--wp--preset--color--base) !default;
+$form-checkbox-radio-color: var(--wp--preset--color--contrast) !default;
+$form-checkbox-radio-border-color: color-mix(in srgb, currentColor 65%, transparent) !default;
+$form-checkbox-radio-checked-background: var(--wp--preset--color--accent-1) !default;
+$form-checkbox-radio-checked-border: var(--wp--preset--color--accent-1) !default;
+
+// =============================================================================
+// Checkbox Icon
+// =============================================================================
+
+$form-checkbox-icon-color: white !default;
+$form-checkbox-icon-stroke-width: 2.5 !default;
+
+// =============================================================================
+// Radio Icon
+// =============================================================================
+
+$form-radio-icon-color: white !default;

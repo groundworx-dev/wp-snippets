@@ -1,0 +1,120 @@
+/**
+ * Form Styling Mixins
+ * 
+ * Reusable form element styling patterns
+ * 
+ * @package Groundworx\Snippets
+ * @author Johanne Courtright
+ * @link https://groundworxagency.com
+ * @version 1.0.0
+ * @license GPL-2.0-or-later
+ */
+
+// =============================================================================
+// Mixins
+// =============================================================================
+
+@mixin form-input {
+  transition: all 200ms;
+  appearance: none;
+  font-family: inherit;
+  font-size: 1em;
+  border-width: $form-input-border-width;
+  border-radius: $form-input-border-radius;
+  border-style: $form-input-border-style;
+  color: $form-input-color;
+  border-color: $form-input-border-color;
+  padding: $form-input-padding;
+  line-height: $form-input-line-height;
+}
+
+@mixin form-input-focus {
+  outline: none;
+  border-color: $form-input-focus-border-color;
+  box-shadow: $form-input-focus-box-shadow;
+}
+
+@mixin form-file {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+
+  &::file-selector-button {
+    padding: 0.5em 0.75em;
+    font-size: 0.75em;
+    margin-right: 1ch;
+    border-radius: 9999px;
+    border: 0;
+    font-weight: 600;
+    background-color: var(--wp--preset--color--accent-3);
+    color: var(--wp--preset--color--contrast);
+    cursor: pointer;
+    transition: all 200ms;
+  }
+
+  &::file-selector-button:hover {
+    background-color: var(--wp--preset--color--contrast);
+    color: var(--wp--preset--color--accent-3);
+  }
+}
+
+@mixin form-select {
+  padding-right: 2em;
+  background-repeat: no-repeat;
+  background-position: calc(100% - #{nth($form-input-padding, 2)}) center;
+  background-size: 0.95em;
+  appearance: none;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.41'> <path d='M10.02,6,8.61,7.41,13.19,12,8.61,16.59,10.02,18l6-6Z' transform='translate(18 -8.61) rotate(90)' fill='#{$form-select-arrow-color}'/></svg>");
+}
+
+@mixin form-checkbox-radio {
+  appearance: none;
+  width: 1em;
+  height: 1em;
+  margin-right: .5ch;
+  font-size: 1em;
+  border-width: $form-input-border-width !important;
+  border-radius: $form-input-border-radius;
+  border-style: $form-input-border-style;
+  border-color: $form-checkbox-radio-border-color;
+  background-color: $form-checkbox-radio-background;
+  color: $form-checkbox-radio-color;
+  
+  &:checked {
+    background-color: $form-checkbox-radio-checked-background;
+    border-color: $form-checkbox-radio-checked-border;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+@mixin form-checkbox {
+  border-radius: 0;
+  
+  &:checked {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 7.5l4 4 6-7' stroke='#{$form-checkbox-icon-color}' stroke-width='#{$form-checkbox-icon-stroke-width}' fill='none' stroke-linecap='square' stroke-linejoin='miter'/%3E%3C/svg%3E");
+  }
+}
+
+@mixin form-radio {
+  border-radius: 100%;
+  
+  &:checked {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='5' fill='#{$form-radio-icon-color}'/%3E%3C/svg%3E");
+  }
+}
+
+@mixin custom-multiselect {
+  background-color: $form-checkbox-radio-background;
+  color: $form-input-color;
+  transition: all 300ms ease-in-out;
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  text-align: left;
+}

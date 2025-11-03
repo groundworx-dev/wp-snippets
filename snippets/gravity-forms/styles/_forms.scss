@@ -1,0 +1,75 @@
+:root .gform_wrapper.gravity-theme,
+[data-form-theme="gravity-theme"],
+* {
+  form {
+    fieldset {
+      padding: 0;
+      margin: 0;
+      border: 0;
+    }
+
+    legend,
+    label {
+      padding: 0;
+    }
+  }
+
+  // Shared input types
+  [type='text'],
+  input:not([type]),
+  [type='email'],
+  [type='url'],
+  [type='password'],
+  [type='number'],
+  [type='date'],
+  [type='datetime-local'],
+  [type='month'],
+  [type='search'],
+  [type='tel'],
+  [type='time'],
+  [type='week'],
+  [multiple],
+  textarea,
+  select {
+    @include form-input;
+    &:focus {
+      @include form-input-focus;
+    }
+  }
+
+  // Specific: select (dropdown)
+  select {
+    @include form-select;
+  }
+
+  // Specific: multi-select
+  [multiple][size]:not([size="1"]) {
+    @include form-input;
+  }
+
+  // Specific: textarea
+  textarea {
+    @include form-input;
+  }
+
+  // Specific: checkbox and radio
+  [type='checkbox'] {
+    @include form-checkbox-radio;
+    @include form-checkbox;
+    &:focus {
+      @include form-input-focus;
+    }
+  }
+  [type='radio'] {
+    @include form-checkbox-radio;
+    @include form-radio;
+    &:focus {
+      @include form-input-focus;
+    }
+  }
+
+  // Specific: file upload
+  [type='file'] {
+    @include form-file;
+  }
+}

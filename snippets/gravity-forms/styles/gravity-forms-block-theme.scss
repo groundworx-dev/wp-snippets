@@ -1,0 +1,74 @@
+/**
+ * Gravity Forms Block Theme Styles
+ * 
+ * Provides consistent form styling using WordPress block theme design tokens
+ * and resets Gravity Forms opinionated defaults
+ * 
+ * @package Groundworx\Snippets
+ * @author Johanne Courtright
+ * @link https://groundworxagency.com
+ * @version 1.0.0
+ * @license GPL-2.0-or-later
+ */
+
+@import 'mixins';
+@import 'forms';
+
+:root .gform_wrapper.gravity-theme {
+  .gfield_label {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  input:not([type="radio"]):not([type="checkbox"]):not([type="image"]):not([type="file"]) {
+    line-height: inherit;
+    min-height: unset;
+  }
+
+  .gform-field-label.gfield_header_item,
+  .gform-field-label.gform-field-label--type-sub {
+    font-size: 0.85em;
+  }
+
+  .gfield_description {
+      font-size: 1em;
+  }
+
+  .gfield_description:not(.validation_message) {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .gform-field-label.gfield_header_item, 
+  .gform-field-label.gform-field-label--type-sub {
+      font-size: .85em;
+  }
+  
+  .gfield_checkbox label, .gfield_radio label {
+    font-size: 1em;
+  }
+
+  .gfield_list_icons,
+  .gfield_header_item--icons {
+    width: 2.25em;
+    padding: 0.25em;
+    box-sizing: content-box;
+    column-gap: .25em;
+  }
+  .gfield_header_item--icons {
+    font-size: inherit;
+    line-height: 1;
+  }
+  .gfield_list_icons button {
+    overflow: clip;
+    font-size: 1em;
+    text-indent: -9999px;
+    width: 1em;
+    height: 1em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &.delete_list_item {
+      margin: unset;
+    }
+  }
+}
