@@ -34,6 +34,10 @@
       font-size: 1em;
   }
 
+  .gfield_required {
+    font-size: .85em;
+  }
+
   .gfield_description:not(.validation_message) {
     margin-top: 0;
     padding-top: 0;

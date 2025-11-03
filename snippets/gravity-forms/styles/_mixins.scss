@@ -59,12 +59,12 @@
 }
 
 @mixin form-select {
-  padding-right: 2em;
+  padding-right: calc(#{$form-select-arrow-size} + (#{nth($form-input-padding, 2)} * 2));
   background-repeat: no-repeat;
   background-position: calc(100% - #{nth($form-input-padding, 2)}) center;
-  background-size: 0.95em;
+  background-size: $form-select-arrow-size;
   appearance: none;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.41'> <path d='M10.02,6,8.61,7.41,13.19,12,8.61,16.59,10.02,18l6-6Z' transform='translate(18 -8.61) rotate(90)' fill='#{$form-select-arrow-color}'/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.41'> <path d='#{$form-select-arrow-path}' transform='translate(18 -8.61) rotate(90)' fill='#{$form-select-arrow-color}'/></svg>");
 }
 
 @mixin form-checkbox-radio {
