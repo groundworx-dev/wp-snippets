@@ -36,11 +36,11 @@
         "spacing": {
 			"margin": [ "vertical" ],
             "padding": true,
-			"blockGap": true,
+			"blockGap": false,
 			"__experimentalDefaultControls": {
 				"padding": true,
                 "margin": true,
-				"blockGap": true
+				"blockGap": false
 			}
 		},
 		"position": {
