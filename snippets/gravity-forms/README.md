@@ -22,13 +22,13 @@ PHP class that replaces Gravity Forms button markup with actual WordPress block 
 
 ### 🎨 [Block Theme Styles](./styles/)
 
-Complete SCSS styling system for Gravity Forms using WordPress block theme design tokens.
+Complete styling system for Gravity Forms using CSS custom properties and modern techniques.
 
 **What it does:**
-- Styles all form elements using `--wp--preset--color--*` tokens
+- Styles all form elements using CSS custom properties
 - Scalable em-based design (change one font-size, everything scales)
-- Minimal overrides that don't break Gravity Forms functionality
-- Customizable via SCSS variables
+- Mask-based checkbox/radio buttons for crisp rendering
+- Customizable via CSS variables (works out of the box)
 
 [Read full documentation →](./styles/)
 
@@ -51,4 +51,4 @@ Complete SCSS styling system for Gravity Forms using WordPress block theme desig
 
 Visit [Groundworx.dev](https://groundworx.dev) for more information.
 
-Part of the [Groundworx Snippets](https://github.com/groundworx/snippets) collection.
+Part of the [Groundworx Snippets](https://github.com/groundworx-dev/wp-snippets) collection.

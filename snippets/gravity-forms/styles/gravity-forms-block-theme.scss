@@ -15,13 +15,36 @@
 @import 'forms';
 
 :root .gform_wrapper.gravity-theme {
+  
+  .gsection {
+    border-color: currentColor;
+  }
+
+  .gf_progressbar_title {
+    color: currentColor;
+    font-size: .85em;
+  }
+
+  .gf_progressbar {
+    background-color: var(--form--progressbar--background);
+  }
+
+  .gf_progressbar_percentage.percentbar_blue {
+    background-color: var(--form--progressbar--foreground);
+    color: var(--form--progressbar--foreground--text);
+  }
+  
+  .gfield_required {
+    color: var(--form--labels--required);
+  }
+
   .gfield_label {
     font-size: 1em;
     font-weight: bold;
+    color: var(--form--labels);
   }
 
   input:not([type="radio"]):not([type="checkbox"]):not([type="image"]):not([type="file"]) {
-    line-height: inherit;
     min-height: unset;
   }
 
@@ -64,6 +87,7 @@
     line-height: 1;
   }
   .gfield_list_icons button {
+    position: relative;
     overflow: clip;
     font-size: 1em;
     text-indent: -9999px;
@@ -71,8 +95,28 @@
     height: 1em;
     background-repeat: no-repeat;
     background-size: cover;
+    background-image: none;
+    background-color: transparent;
+    color: inherit;
+    opacity: .65;
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: currentColor;
+      mask-image: url("data:image/svg+xml,%3Csvg viewBox='-444 448 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-316 448c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128S-245.3 448-316 448zM-316 672c-53 0-96-43-96-96s43-96 96-96 96 43 96 96S-263 672-316 672zM-332 512v48h-48v32h48v48h32v-48h48v-32h-48v-48z' fill='black'/%3E%3C/svg%3E");
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+    &:hover {
+      opacity: 1;
+    }
     &.delete_list_item {
       margin: unset;
+      &::before {
+        mask-image: url("data:image/svg+xml,%3Csvg viewBox='-139 51 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M117 51c-141.4 0-256 114.6-256 256 0 141.4 114.6 256 256 256 141.4 0 256-114.6 256-256C373 165.6 258.4 51 117 51zM117 499C11 499-75 413-75 307s86-192 192-192c106 0 192 86 192 192S223 499 117 499zM-11 339h256v-64H-11V339z' fill='black'/%3E%3C/svg%3E");
+      }
     }
   }
 }

@@ -1,0 +1,119 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+	"name": "groundworx/gutenberg-gravity-forms",
+    "title": "Gutenberg Gravity Forms",
+    "category": "widgets",
+    "description": "A Gravity Forms block with full block theme styling support",
+    "keywords": ["gravity", "forms", "contact", "styled"],
+    "version": "1.0.0",
+    "textdomain": "groundworx",
+    "icon": "forms",
+    "supports": {
+		"align": true,
+        "className": true,
+        "color": {
+			"text": true,
+            "heading": true,
+            "button": true,
+            "link": true,
+			"background": true,
+			"gradients": true
+		},
+        "__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		},
+		"shadow": true,
+        "spacing": {
+			"margin": [ "vertical" ],
+            "padding": true,
+			"blockGap": true,
+			"__experimentalDefaultControls": {
+				"padding": true,
+                "margin": true,
+				"blockGap": true
+			}
+		},
+		"position": {
+			"sticky": true
+		},
+        "typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"dimensions": {
+			"minHeight": true
+		}
+    },
+    "attributes": {
+        "gfAttributes": {
+            "type": "object",
+            "default": {}
+        },
+		
+		"labelColor": { "type": "string" },
+		"customLabelColor": { "type": "string" },
+		"rgbLabelColor": { "type": "string" },
+
+		"requiredColor": { "type": "string" },
+		"customRequiredColor": { "type": "string" },
+		"rgbRequiredColor": { "type": "string" },
+
+		"inputTextColor": { "type": "string" },
+		"customInputTextColor": { "type": "string" },
+		"rgbInputTextColor": { "type": "string" },
+
+		"inputBackgroundColor": { "type": "string" },
+		"customInputBackgroundColor": { "type": "string" },
+		"rgbInputBackgroundColor": { "type": "string" },
+
+		"inputBorderColor": { "type": "string" },
+		"customInputBorderColor": { "type": "string" },
+		"rgbInputBorderColor": { "type": "string" },
+
+		"inputRadioTextColor": { "type": "string" },
+		"customInputRadioTextColor": { "type": "string" },
+		"rgbInputRadioTextColor": { "type": "string" },
+
+		"inputRadioBackgroundColor": { "type": "string" },
+		"customInputRadioBackgroundColor": { "type": "string" },
+		"rgbInputRadioBackgroundColor": { "type": "string" },
+
+		"progressbarForegroundTextColor": { "type": "string" },
+		"customProgressbarForegroundTextColor": { "type": "string" },
+		"rgbProgressbarForegroundTextColor": { "type": "string" },
+
+		"progressbarForegroundColor": { "type": "string" },
+		"customProgressbarForegroundColor": { "type": "string" },
+		"rgbProgressbarForegroundColor": { "type": "string" },
+
+		"progressbarBackgroundColor": { "type": "string" },
+		"customProgressbarBackgroundColor": { "type": "string" },
+		"rgbProgressbarBackgroundColor": { "type": "string" }
+
+    },
+    "selectors": {
+		"root": ".wp-block-groundworx-gutenberg-gravity-forms"		
+	},
+	"editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": [ "file:./style-index.css" ]
+}

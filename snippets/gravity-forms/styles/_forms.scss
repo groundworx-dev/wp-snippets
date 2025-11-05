@@ -1,3 +1,31 @@
+body {
+    --form--labels: currentColor;
+    --form--labels--required: currentColor;
+    
+    --form--input--text: #343434;
+    --form--input--background: #ffffff;
+    --form--input--focus--color: #007cba;
+
+    --form--input--border--color: #aaaaaa;
+    --form--input--border--style: solid;
+    --form--input--border--width: 0.075em;
+    --form--input--border--radius: 0px;
+    
+    --form--input--padding-x: 0.35em;
+    --form--input--padding-y: 0.5em;
+    --form--input--lineheight: inherit;
+    
+    --form--select--arrow: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7.41'> <path d='M10.02,6,8.61,7.41,13.19,12,8.61,16.59,10.02,18l6-6Z' transform='translate(18 -8.61) rotate(90)' fill='rgb(52, 52, 52)'/></svg>");
+    --form--select--arrow--width: .95em;
+
+    --form--checkbox-radio--text: #ffffff;
+    --form--checkbox-radio--background: #007cba;
+
+    --form--progressbar--background: #cdcdcd;
+    --form--progressbar--foreground: #007cba;
+    --form--progressbar--foreground--text: #ffffff;
+}
+
 :root .gform_wrapper.gravity-theme,
 [data-form-theme="gravity-theme"],
 * {
@@ -56,20 +84,15 @@
   [type='checkbox'] {
     @include form-checkbox-radio;
     @include form-checkbox;
-    &:focus {
-      @include form-input-focus;
-    }
   }
   [type='radio'] {
     @include form-checkbox-radio;
     @include form-radio;
-    &:focus {
-      @include form-input-focus;
-    }
   }
 
   // Specific: file upload
   [type='file'] {
     @include form-file;
   }
+
 }

@@ -371,7 +371,7 @@ Visit [Groundworx.dev](https://groundworx.dev) for:
 - Theme customization
 
 ### More Snippets
-This is part of the **Groundworx Snippets** collection - professional, production-ready WordPress code snippets. Check out the full collection at [github.com/groundworx/snippets](https://github.com/groundworx/snippets).
+This is part of the **Groundworx Snippets** collection - professional, production-ready WordPress code snippets. Check out the full collection at [github.com/groundworx/snippets](https://github.com/groundworx-dev/wp-snippets).
 
 ## Author
 

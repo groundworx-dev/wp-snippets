@@ -6,24 +6,25 @@ Professional, scalable SCSS for integrating Gravity Forms into WordPress block t
 
 ## Overview
 
-A complete SCSS styling system for theme developers who want to integrate Gravity Forms seamlessly with WordPress block themes. Built on a scalable em-based architecture that uses native WordPress design tokens for consistent, maintainable form styling.
+A complete styling system for theme developers who want to integrate Gravity Forms seamlessly with WordPress block themes. Built on a scalable em-based architecture using CSS custom properties for consistent, maintainable form styling.
 
 ## Key Features
 
-- **🎨 Block Theme Integration** - Uses WordPress `--wp--preset--color--*` design tokens
+- **🎨 CSS Custom Properties** - Easy customization via CSS variables
 - **📏 Truly Scalable** - All measurements use `em` units for proportional scaling
+- **✨ Modern Styling** - Mask-based checkbox/radio for crisp rendering at any size
 - **♿ Accessible** - Proper font sizing, keyboard navigation, screen reader support
 - **🎯 Non-Invasive** - Minimal overrides, works alongside Gravity Forms themes
-- **🔧 Customizable** - Easy variable-based configuration
-- **⚡ Modern CSS** - Uses `color-mix()`, CSS custom properties, and semantic markup
+- **🔧 Customizable** - Override globally or per-form with CSS variables
+- **⚡ Works Out of the Box** - Sensible defaults, no configuration required
 
 ## Who This Is For
 
 **Theme Developers** who want to:
 - Integrate Gravity Forms seamlessly into block themes
-- Use WordPress design tokens for consistent styling
-- Provide clients with forms that match their theme automatically
-- Build scalable, maintainable form styling systems
+- Use CSS custom properties for flexible, maintainable styling
+- Provide clients with forms that work beautifully out of the box
+- Build scalable form styling systems with minimal code
 
 **Not a plugin** - This is SCSS source code for theme developers to integrate into their themes.
 
@@ -31,9 +32,8 @@ A complete SCSS styling system for theme developers who want to integrate Gravit
 
 ```
 styles/
-├── _variables.scss                    # Configuration variables
 ├── _mixins.scss                       # Reusable form styling mixins
-├── _forms.scss                        # Universal form element styles
+├── _forms.scss                        # CSS variables and universal form styles
 └── gravity-forms-block-theme.scss     # Complete Gravity Forms integration
 ```
 
@@ -54,7 +54,6 @@ your-theme/
 └── assets/
     └── scss/
         └── gravity-forms/
-            ├── _variables.scss
             ├── _mixins.scss
             ├── _forms.scss
             └── gravity-forms-block-theme.scss
@@ -174,112 +173,99 @@ Use `_forms.scss` to style all forms on your site:
 [data-form-theme="gravity-theme"] {
 ```
 
-### Option 3: Just the Mixins
+## Customization
 
-Use `_mixins.scss` in your own projects:
+The system works perfectly out of the box with sensible defaults. If you need to customize:
+
+### Method 1: Edit Global Defaults
+
+Edit the CSS custom properties in `_forms.scss`:
 
 ```scss
-@import 'mixins';
-
-.my-custom-form {
-  input[type="text"] {
-    @include form-input;
-    
-    &:focus {
-      @include form-input-focus;
-    }
-  }
-  
-  input[type="checkbox"] {
-    @include form-checkbox-radio;
-    @include form-checkbox;
-  }
+body {
+    --form--input--text: #343434;              // Change input text color
+    --form--input--background: #ffffff;        // Change input background
+    --form--input--border--color: #aaaaaa;     // Change border color
+    --form--input--border--radius: 0.5em;      // Add rounded corners
+    // ... edit any variable
 }
 ```
 
-## Customization
+### Method 2: Per-Form Overrides
 
-### Method 1: Override Variables (Recommended)
-
-Create a custom file that overrides variables before importing:
+Target specific forms using their CSS class:
 
 ```scss
-// custom-gravity-forms.scss
+// For a specific form with custom class "contact-form"
+:root .gform_wrapper.gravity-theme.contact-form {
+    --form--input--text: #ff0000;
+    --form--input--background: #f5f5f5;
+    --form--input--border--color: #333333;
+    --form--input--border--radius: 0.5em;
+}
 
-// Override variables
-$form-input-border-radius: 0.5em;
-$form-input-border-width: 2px;
-$form-input-focus-border-color: var(--wp--preset--color--accent-2);
-
-// Import the complete styles
-@import 'gravity-forms-block-theme';
+// For a newsletter form
+:root .gform_wrapper.gravity-theme.newsletter-form {
+    --form--input--text: #0066cc;
+    --form--progressbar--foreground: #0066cc;
+}
 ```
 
-### Method 2: Modify Variables File
+### Available CSS Custom Properties
 
-Edit `_variables.scss` directly to change defaults.
-
-### Available Variables
-
-#### Form Inputs
+#### Labels
 ```scss
-$form-input-color: var(--wp--preset--color--contrast);
-$form-input-border-color: color-mix(in srgb, currentColor 65%, transparent);
-$form-input-border-width: 0.075em;
-$form-input-border-radius: 0%;
-$form-input-border-style: solid;
-$form-input-padding: 0.35em 0.5em;
-$form-input-line-height: 1.5em;
+--form--labels: currentColor;
+--form--labels--required: currentColor;
 ```
 
-#### Focus States
+#### Input Fields
 ```scss
-$form-input-focus-border-color: var(--wp--preset--color--accent-1);
-$form-input-focus-box-shadow: 0 0 2px 0 var(--wp--preset--color--accent-1);
+--form--input--text: #343434;
+--form--input--background: #ffffff;
+--form--input--focus--color: #007cba;
+--form--input--border--color: #aaaaaa;
+--form--input--border--style: solid;
+--form--input--border--width: 0.075em;
+--form--input--border--radius: 0px;
+--form--input--padding-x: 0.35em;
+--form--input--padding-y: 0.5em;
+--form--input--lineheight: inherit;
+```
+
+#### Select Dropdown
+```scss
+--form--select--arrow: url("data:image/svg+xml...");
+--form--select--arrow--width: .95em;
 ```
 
 #### Checkbox & Radio
 ```scss
-$form-checkbox-radio-background: var(--wp--preset--color--base);
-$form-checkbox-radio-color: var(--wp--preset--color--contrast);
-$form-checkbox-radio-border-color: color-mix(in srgb, currentColor 65%, transparent);
-$form-checkbox-radio-checked-background: var(--wp--preset--color--accent-1);
-$form-checkbox-radio-checked-border: var(--wp--preset--color--accent-1);
+--form--checkbox-radio--text: #ffffff;
+--form--checkbox-radio--background: #007cba;
 ```
 
-#### Icons
+#### Progress Bar
 ```scss
-$form-checkbox-icon-color: white;
-$form-checkbox-icon-stroke-width: 2.5;
-$form-radio-icon-color: white;
-$form-select-arrow-color: rgb(76, 76, 76);
+--form--progressbar--background: #cdcdcd;
+--form--progressbar--foreground: #007cba;
+--form--progressbar--foreground--text: #ffffff;
 ```
-
-### WordPress Design Tokens
-
-The styles use your block theme's color palette:
-
-- `--wp--preset--color--contrast` - Text and borders
-- `--wp--preset--color--base` - Backgrounds
-- `--wp--preset--color--accent-1` - Focus states and checked inputs
-- `--wp--preset--color--accent-3` - File upload buttons
-
-These automatically adapt to your theme's colors.
 
 ## What Gets Styled
 
 ### Form Elements
 - Text inputs (text, email, url, password, number, date, etc.)
 - Textareas
-- Select dropdowns (with custom arrow)
-- Checkboxes (with custom checkmark)
-- Radio buttons (with custom dot)
+- Select dropdowns (with custom SVG arrow)
+- Checkboxes (with mask-based checkmark for crisp rendering)
+- Radio buttons (with mask-based dot for crisp rendering)
 - File uploads (with styled button)
 - Multi-select fields
 
 ### Gravity Forms Specific
 - Field labels and descriptions
-- List field icons (add/remove buttons)
+- Progress bars
 - Form field spacing
 - Typography adjustments
 - Layout fixes
@@ -305,32 +291,50 @@ These automatically adapt to your theme's colors.
 ```scss
 // Compile and enqueue gravity-forms-block-theme.css
 // Set Gravity Forms to use "Gravity Forms 2.5 Theme"
-// Done! Forms now use your block theme styles
+// Done! Forms work beautifully out of the box
 ```
 
-### Custom Accent Color
+### Custom Brand Colors
 
 ```scss
-$form-input-focus-border-color: var(--wp--preset--color--accent-2);
-$form-checkbox-radio-checked-background: var(--wp--preset--color--accent-2);
-
-@import 'gravity-forms-block-theme';
+// In _forms.scss or your own CSS
+body {
+    --form--input--focus--color: #ff6600;
+    --form--checkbox-radio--background: #ff6600;
+    --form--progressbar--foreground: #ff6600;
+}
 ```
 
 ### Rounded Inputs
 
 ```scss
-$form-input-border-radius: 0.5em;
-
-@import 'gravity-forms-block-theme';
+body {
+    --form--input--border--radius: 0.5em;
+}
 ```
 
 ### Thicker Borders
 
 ```scss
-$form-input-border-width: 2px;
+body {
+    --form--input--border--width: 2px;
+}
+```
 
-@import 'gravity-forms-block-theme';
+### Per-Form Customization
+
+```scss
+// Contact form with blue accent
+:root .gform_wrapper.gravity-theme.contact-form {
+    --form--input--focus--color: #0066cc;
+    --form--checkbox-radio--background: #0066cc;
+}
+
+// Newsletter form with green accent
+:root .gform_wrapper.gravity-theme.newsletter-form {
+    --form--input--focus--color: #00cc66;
+    --form--checkbox-radio--background: #00cc66;
+}
 ```
 
 ### Scale Forms by Context
@@ -358,13 +362,14 @@ $form-input-border-width: 2px;
 - ✅ Ensure your theme isn't overriding form styles
 - ✅ Try increasing priority in `wp_enqueue_scripts`
 
-### Icons not scaling
-- ✅ Verify you have the complete `gravity-forms-block-theme.scss` overrides
-- ✅ Check that Gravity Forms list field CSS isn't being overridden
+### Checkbox/Radio icons not showing
+- ✅ Verify browser supports CSS `mask-image`
+- ✅ Check that you have the complete `_mixins.scss` file
+- ✅ Ensure no other CSS is overriding the `::before` pseudo-element
 
-### Colors don't match theme
-- ✅ Ensure your theme properly defines `--wp--preset--color--*` variables
-- ✅ Override color variables to match your brand
+### Colors don't look right
+- ✅ Check the CSS custom property values in `_forms.scss`
+- ✅ Override specific variables for your design
 
 ## Browser Support
 
@@ -373,7 +378,7 @@ $form-input-border-width: 2px;
 - Safari (latest)
 - Modern mobile browsers
 
-**Note:** Uses `color-mix()` which requires modern browsers. For older browser support, replace with solid colors.
+**Note:** Uses CSS `mask-image` for checkbox/radio styling and `color-mix()` for some color manipulation. Both require modern browsers.
 
 ## Performance
 
@@ -396,7 +401,7 @@ Visit [Groundworx.dev](https://groundworx.dev) for:
 - Sites for home builders, contractors, and real estate professionals
 
 ### More Snippets
-This is part of the **Groundworx Snippets** collection - professional, production-ready WordPress code snippets. Check out the full collection at [github.com/groundworx/snippets](https://github.com/groundworx/snippets).
+This is part of the **Groundworx Snippets** collection - professional, production-ready WordPress code snippets. Check out the full collection at [github.com/groundworx/snippets](https://github.com/groundworx-dev/wp-snippets).
 
 ## Author
 
