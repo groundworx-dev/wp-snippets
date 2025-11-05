@@ -103,10 +103,10 @@ GravityForms_Block_Buttons::init();
 
 ```php
 GravityForms_Block_Buttons::init( [
-    'primary_style' => 'is-style-fill',           // Submit & Next buttons
-    'secondary_style' => 'is-style-outline',      // Previous buttons
-    'primary_classes' => 'custom-submit-class',   // Additional classes
-    'secondary_classes' => 'custom-back-class'    // Additional classes
+    'primary_style' => 'is-style-fill',
+    'secondary_style' => 'is-style-outline',
+    'primary_classes' => 'my-custom-class',
+    'secondary_classes' => 'another-class'
 ] );
 ```
 
@@ -148,7 +148,7 @@ add_action( 'gform_pre_render', function( $form ) {
         // Contact form gets filled buttons
         GravityForms_Block_Buttons::init( [
             'primary_style' => 'is-style-fill',
-            'secondary_style' => 'is-style-outline'
+            'secondary_style' => 'is-style-outline',
         ] );
     }
     return $form;

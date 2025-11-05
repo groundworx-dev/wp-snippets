@@ -22,71 +22,71 @@ namespace Groundworx\Snippets;
 class GravityForms_Block_Buttons {
 
     /**
-     * Button style for submit buttons
+     * Button style for primary action buttons (submit, next)
      * 
      * @var string Button style class (e.g., 'is-style-fill', 'is-style-outline')
      */
-    private static $submit_button_style = '';
+    private static $primary_button_style = '';
 
     /**
-     * Button style for navigation buttons (next/previous)
+     * Button style for secondary action buttons (previous, back)
      * 
      * @var string Button style class (e.g., 'is-style-fill', 'is-style-outline')
      */
-    private static $navigation_button_style = 'is-style-outline';
+    private static $secondary_button_style = 'is-style-outline';
 
     /**
-     * Additional classes for submit button wrapper
+     * Additional classes for primary action button wrapper
      * 
      * @var string Additional CSS classes
      */
-    private static $submit_button_classes = '';
+    private static $primary_button_classes = '';
 
     /**
-     * Additional classes for navigation button wrapper
+     * Additional classes for secondary action button wrapper
      * 
      * @var string Additional CSS classes
      */
-    private static $navigation_button_classes = '';
+    private static $secondary_button_classes = '';
 
     /**
      * Initialize the class and set up hooks
      * 
      * @param array $args Optional configuration arguments
-     *                    - submit_style: Button style for submit buttons
-     *                    - navigation_style: Button style for next/previous buttons
-     *                    - submit_classes: Additional classes for submit button
-     *                    - navigation_classes: Additional classes for navigation buttons
+     *                    - primary_style: Button style for submit/next buttons
+     *                    - secondary_style: Button style for previous/back buttons
+     *                    - primary_classes: Additional classes for primary buttons
+     *                    - secondary_classes: Additional classes for secondary buttons
      */
     public static function init( $args = [] ) {
         // Allow configuration override
-        if ( isset( $args['submit_style'] ) ) {
-            self::$submit_button_style = $args['submit_style'];
+        if ( isset( $args['primary_style'] ) ) {
+            self::$primary_button_style = $args['primary_style'];
         }
-        if ( isset( $args['navigation_style'] ) ) {
-            self::$navigation_button_style = $args['navigation_style'];
+        if ( isset( $args['secondary_style'] ) ) {
+            self::$secondary_button_style = $args['secondary_style'];
         }
-        if ( isset( $args['submit_classes'] ) ) {
-            self::$submit_button_classes = $args['submit_classes'];
+        if ( isset( $args['primary_classes'] ) ) {
+            self::$primary_button_classes = $args['primary_classes'];
         }
-        if ( isset( $args['navigation_classes'] ) ) {
-            self::$navigation_button_classes = $args['navigation_classes'];
+        if ( isset( $args['secondary_classes'] ) ) {
+            self::$secondary_button_classes = $args['secondary_classes'];
         }
 
-        add_filter( 'gform_submit_button', [ __CLASS__, 'convert_submit_button' ], 10, 2 );
-        add_filter( 'gform_next_button', [ __CLASS__, 'convert_navigation_button' ], 20, 2 );
-        add_filter( 'gform_previous_button', [ __CLASS__, 'convert_navigation_button' ], 20, 2 );
+        add_filter( 'gform_submit_button', [ __CLASS__, 'convert_primary_button' ], 10, 2 );
+        add_filter( 'gform_next_button', [ __CLASS__, 'convert_secondary_button' ], 20, 2 );
+        add_filter( 'gform_previous_button', [ __CLASS__, 'convert_secondary_button' ], 20, 2 );
         add_filter( 'gform_get_form_filter', [ __CLASS__, 'add_footer_wrapper_classes' ], 20, 2 );
     }
 
     /**
-     * Convert submit button to block button format
+     * Convert primary action button to block button format (submit, next)
      * 
      * @param string $button Button HTML
      * @param array $form Gravity Forms form array
      * @return string Modified button HTML
      */
-    public static function convert_submit_button( $button, $form ) {
+    public static function convert_primary_button( $button, $form ) {
         $fragment = \WP_HTML_Processor::create_fragment( $button );
         $fragment->next_token();
 
@@ -103,8 +103,8 @@ class GravityForms_Block_Buttons {
         // Build wrapper classes
         $wrapper_classes = array_filter( [
             $has_full ? 'gform-button--width-full' : '',
-            self::$submit_button_style,
-            self::$submit_button_classes
+            self::$primary_button_style,
+            self::$primary_button_classes
         ] );
         
         return do_blocks( sprintf(
@@ -120,13 +120,13 @@ class GravityForms_Block_Buttons {
     }
 
     /**
-     * Convert next/previous buttons to block button format
+     * Convert secondary action button to block button format (previous, back)
      * 
      * @param string $button Button HTML
      * @param array $form Gravity Forms form array
      * @return string Modified button HTML
      */
-    public static function convert_navigation_button( $button, $form ) {
+    public static function convert_secondary_button( $button, $form ) {
         $fragment = \WP_HTML_Processor::create_fragment( $button );
         $fragment->next_token();
      
@@ -140,8 +140,8 @@ class GravityForms_Block_Buttons {
 
         // Build wrapper classes
         $wrapper_classes = array_filter( [
-            self::$navigation_button_style,
-            self::$navigation_button_classes
+            self::$secondary_button_style,
+            self::$secondary_button_classes
         ] );
 
         return do_blocks( sprintf(
@@ -211,8 +211,8 @@ GravityForms_Block_Buttons::init();
 
 // Or customize:
 // GravityForms_Block_Buttons::init( [
-//     'submit_style' => 'is-style-fill',
-//     'navigation_style' => 'is-style-outline',
-//     'submit_classes' => 'my-custom-class',
-//     'navigation_classes' => 'another-class'
+//     'primary_style' => 'is-style-fill',
+//     'secondary_style' => 'is-style-outline',
+//     'primary_classes' => 'my-custom-class',
+//     'secondary_classes' => 'another-class'
 // ] );
