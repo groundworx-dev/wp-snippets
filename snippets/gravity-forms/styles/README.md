@@ -110,13 +110,13 @@ All measurements use `em` units relative to `font-size`, creating a truly scalab
 
 ```scss
 // Want bigger forms?
-.large-contact-form {
-  font-size: 1.5em; // Everything scales: inputs, buttons, spacing, icons
+:root .gform_wrapper.gravity-theme {
+  font-size: 1.5rem; // Everything scales: inputs, buttons, spacing, icons
 }
 
 // Smaller forms?
-.compact-newsletter-form {
-  font-size: 0.875em; // Everything scales down proportionally
+:root .gform_wrapper.gravity-theme {
+  font-size: 0.875rem; // Everything scales down proportionally
 }
 ```
 
